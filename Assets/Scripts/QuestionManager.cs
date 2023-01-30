@@ -6,35 +6,29 @@ using TMPro;
 
 public class QuestionManager : MonoBehaviour
 {
-    string question = null;
-    string formatedQuestion = null;
     string [] words = new string[]{"",""};
-    bool wordSwitch = false;
+    bool switchWord = false;
 
-    // Update is called once per frame
     void Update()
     {   
-        if(question != null){
-            int matchCount = 0;
-            formatedQuestion = Regex.Replace(question,"(___)", (m) => words[matchCount++]);
-            transform.GetComponent<TextMeshProUGUI>().text = formatedQuestion;
-        }else{
-            transform.parent.GetChild(1).GetChild(0).GetComponent<InstantiateTextoptions>().FillSentences(words);
-        }
+        transform.GetComponent<InstantiateTextoptions>().FillSentences(words);
     }
     public void Type(char c)
     {
-        if(!wordSwitch){
-            words[0] += c;
-        }else{
-            words[1] += c;
+        int array = switchWord? 1 : 0;
+        if(c == '\b' && words[array].Length > 0){
+           words[array] = words[array].Substring(0,words[array].Length-1);
+        }else if(c != '\b'){
+           words[array] += c;
         }
     }
-    public void SetWordSwitch(bool word){
-        wordSwitch = word;
+    public void SwitchWord(){
+        switchWord = !switchWord;
     }
-    public void SetQuestion(string question)
-    {
-        this.question = question;
+    public void ActiveQuestion(int index){
+        for(int i = 0;i < transform.childCount;i++){
+            Debug.Log(index +" == "+i + " "+transform.childCount);
+            transform.GetChild(i).GetChild(0).GetComponent<TextMeshProUGUI>().color = i == index ? new Color32(0, 0, 0, 255): new Color32(0, 0, 0, 128);
+        }
     }
 }

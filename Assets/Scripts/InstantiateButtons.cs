@@ -15,8 +15,8 @@ public class InstantiateButtons : MonoBehaviour
         int div = emotionPairs.Length;
         float radianSteps = (2*Mathf.PI)/div;
         for (int i =0;i < div;i++){
-            float x = w/3 + 300 * Mathf.Cos(radianSteps*i);
-            float y = 300 * Mathf.Sin(radianSteps*i);
+            float x = w/3.5f + 370 * Mathf.Cos(radianSteps*i);
+            float y = 370 * Mathf.Sin(radianSteps*i);
             Vector3 position = new Vector3(x,y,1);
             GameObject button = Instantiate(buttonTemplate,transform);
             button.name = "Emotion "+i;
@@ -24,10 +24,11 @@ public class InstantiateButtons : MonoBehaviour
             button.GetComponent<SelectEmotion>().emotionIndex = i;
             button.GetComponent<SelectEmotion>().maxIndex = div-1;
             button.GetComponent<SelectEmotion>().start = position;
-            button.GetComponent<SelectEmotion>().dest = new Vector3((w/3),0,1);
+            button.GetComponent<SelectEmotion>().dest = new Vector3((w/3.5f),0,1);
             TextMeshProUGUI textObject = button.transform.GetChild(0).GetComponent<TextMeshProUGUI>();
             textObject.text = emotionPairs[i];
         }  
+        GameObject.Find("EmotionQuestion").transform.GetChild(0).transform.position = new Vector3(w/3.5f,0,1);
         Destroy(buttonTemplate);
     }
 }

@@ -17,20 +17,28 @@ public class InstantiateTextoptions : MonoBehaviour
     {
         TextMeshProUGUI m_Object;
         GameObject textTemplate = transform.GetChild(0).gameObject; 
-        GameObject g;
         for (int i =0;i<questions.Length;i++){
-            g = Instantiate(textTemplate,transform);
+            GameObject g = Instantiate(textTemplate,transform);
+            g.name = "Question "+i;
             m_Object = g.transform.GetChild(0).GetComponent<TextMeshProUGUI>();
             m_Object.text = questions[i];
+            g.transform.GetComponent<SelectQuestion>().index = i;
         }  
+        textTemplate.transform.parent = null;
         Destroy(textTemplate);
+        transform.GetComponent<QuestionManager>().ActiveQuestion(0);
     }
-
     public void FillSentences(string[] words){
         int index = 0;
         foreach(Transform child in transform){
             int index2 = 0;
-            string formatedQuestion = Regex.Replace(questions[index],"(___)", (m) => words[index2++]);
+            string formatedQuestion = Regex.Replace(questions[index],"(___)", (m) => {
+                if(words[index2] == ""){
+                    index2++;
+                    return "___";
+                }else{
+                    return words[index2++];
+                }});
             child.GetChild(0).GetComponent<TextMeshProUGUI>().text = formatedQuestion;
             index++;
         }

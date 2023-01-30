@@ -10,11 +10,11 @@ public class ToUpperCase : MonoBehaviour
         uppercase = !uppercase;
         Transform parentTransform =  transform.parent;
         if(uppercase){            
-            for(int i = 0; i<29;i++){
+            for(int i = 0; i<26;i++){
                 parentTransform.GetChild(i).GetChild(0).GetComponent<TextMeshProUGUI>().text = parentTransform.GetChild(i).GetChild(0).GetComponent<TextMeshProUGUI>().text.ToUpper();
             } 
         }else{                  
-            for(int i = 0; i<29;i++){
+            for(int i = 0; i<26;i++){
                 parentTransform.GetChild(i).GetChild(0).GetComponent<TextMeshProUGUI>().text = parentTransform.GetChild(i).GetChild(0).GetComponent<TextMeshProUGUI>().text.ToLower();
             } 
         }
