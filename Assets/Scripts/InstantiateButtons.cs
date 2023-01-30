@@ -24,7 +24,7 @@ public class InstantiateButtons : MonoBehaviour
             button.GetComponent<SelectEmotion>().emotionIndex = i;
             button.GetComponent<SelectEmotion>().maxIndex = div-1;
             button.GetComponent<SelectEmotion>().start = position;
-            button.GetComponent<SelectEmotion>().dest = new Vector3((w/3)-200,0,1);
+            button.GetComponent<SelectEmotion>().dest = new Vector3((w/3),0,1);
             TextMeshProUGUI textObject = button.transform.GetChild(0).GetComponent<TextMeshProUGUI>();
             textObject.text = emotionPairs[i];
         }  
