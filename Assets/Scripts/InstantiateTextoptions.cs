@@ -10,7 +10,7 @@ public class InstantiateTextoptions : MonoBehaviour
     string[] questions = new string[]{
             "How could the future of ___ and ___ look like considering climate change?",
             "What connects ___ with ___ in the status quo of climate crisis?",
-            "How will climate change impact humanity regarding ___ and ___ in 100 years?"
+            "How will climate change impact humanity regarding ___ and ___ in 100 years from now?"
     };
     // Start is called before the first frame update
     void Start()
