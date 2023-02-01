@@ -7,7 +7,7 @@ public class InstantiateButtons : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        string[] emotionPairs = new string[]{"Hoffnungsvoll","Verzweifelt","Wütend", "Verständnisvoll","Unsicher","Sicher","Überfordert","Unterfordert","Verantwortlich","Distanziert","Frustriert","Beruhigt"};
+        string[] emotionPairs = new string[]{"HOPEFUL","DESPERATE","ANGRY", "SYMPATHETIC","INSECURE","SECURE","OVERWHELMED","UNDERWHELMED","RESPONSIBLE","DISTANCED","FRUSTRATED","CALM"};
         Canvas canvas = FindObjectOfType<Canvas>();
         float h = canvas.GetComponent<RectTransform>().rect.height;
         float w = canvas.GetComponent<RectTransform>().rect.width;
